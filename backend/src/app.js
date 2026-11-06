@@ -31,6 +31,18 @@ const corsOptions = {
       .map((o) => o.trim())
       .filter(Boolean);
 
+    // Whitelist production Vercel frontend deployments
+    const defaultProductionOrigins = [
+      'https://mini-project1-ayur.vercel.app',
+      'https://miniproject1-ayur.vercel.app',
+    ];
+
+    for (const dpo of defaultProductionOrigins) {
+      if (!configuredOrigins.includes(dpo)) {
+        configuredOrigins.push(dpo);
+      }
+    }
+
     if (process.env.FRONTEND_URL && !configuredOrigins.includes(process.env.FRONTEND_URL)) {
       configuredOrigins.push(process.env.FRONTEND_URL);
     }

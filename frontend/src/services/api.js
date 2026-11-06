@@ -3,9 +3,34 @@
  * Supports Authenticated Requests, Token Management, and Dietitian Session Handling
  */
 
-const API_BASE = '/api';
+// Production API URL for deployed Render backend service
+const DEFAULT_PROD_API_URL = 'https://miniproject1-ayur-1.onrender.com';
+
+// 1. Explicit environment variable takes highest precedence (e.g. Docker Compose or Vercel build env)
+// 2. Production build defaults to the deployed Render backend URL
+// 3. Local development defaults to relative '/api' proxy, preserving local Docker/Vite setup
+const RAW_API_URL = (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_API_URL)
+  ? import.meta.env.VITE_API_URL
+  : (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.PROD)
+    ? DEFAULT_PROD_API_URL
+    : '';
+
+const API_BASE = RAW_API_URL ? `${RAW_API_URL.replace(/\/+$/, '')}/api` : '/api';
 const TOKEN_KEY = 'ayurdiet_auth_token';
 const USER_KEY = 'ayurdiet_dietitian_user';
+
+/**
+ * Resolves static or uploaded media URLs (e.g. /uploads/...) to absolute paths in production
+ * while preserving relative paths in local development.
+ */
+export function getMediaUrl(url) {
+  if (!url) return '';
+  if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('data:')) {
+    return url;
+  }
+  const base = RAW_API_URL ? RAW_API_URL.replace(/\/+$/, '') : '';
+  return `${base}${url.startsWith('/') ? '' : '/'}${url}`;
+}
 
 export const tokenStorage = {
   get: () => {
