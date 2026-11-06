@@ -1,0 +1,3 @@
+# Processed Data Storage
+# This directory will hold preprocessed chunks, BM25 index indices,
+# and prepared embeddings ready for Qdrant ingestion.

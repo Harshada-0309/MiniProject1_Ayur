@@ -1,0 +1,15 @@
+{
+  "include": [
+    "ai-service"
+  ],
+  "extraPaths": [
+    "ai-service"
+  ],
+  "executionEnvironments": [
+    {
+      "root": "ai-service"
+    }
+  ],
+  "reportPrivateImportUsage": "none"
+}
+

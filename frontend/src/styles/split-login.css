@@ -1,0 +1,658 @@
+/* ==========================================================================
+   AyurDiet — Premium Split-Screen Login Page Styles
+   Reference-matched split-screen architecture with fruit bowl photograph
+   ========================================================================== */
+
+:root {
+  --ayur-green-primary: #3F6B35;
+  --ayur-green-dark: #2F5326;
+  --ayur-green-hover: #355C2C;
+  --ayur-olive-deep: #3F4B16;
+  --ayur-cream-warm: #F7F3E5;
+  --ayur-lime-soft: #D0E56B;
+  --ayur-white: #FFFFFF;
+  --ayur-text-dark: #303322;
+  --ayur-text-muted: #5F6B55;
+  --ayur-border-light: #E2E8E0;
+  --ayur-bg-neutral: #F9FAF8;
+  --ayur-font-display: 'Outfit', 'Inter', -apple-system, sans-serif;
+  --ayur-font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Dimmed backdrop wrapping the entire viewport */
+.split-login-backdrop {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  box-sizing: border-box;
+  position: relative;
+  background-color: #141812;
+  background-image:
+    radial-gradient(circle at 20% 25%, rgba(63, 107, 53, 0.42) 0%, transparent 48%),
+    radial-gradient(circle at 80% 75%, rgba(63, 75, 22, 0.48) 0%, transparent 50%),
+    linear-gradient(rgba(14, 18, 12, 0.72), rgba(14, 18, 12, 0.78)),
+    url('/images/hero-lifestyle.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  overflow-y: auto;
+  font-family: var(--ayur-font-body);
+}
+
+/* Subtle dark overlay for maximum contrast and modal-like focus */
+.split-login-dimmed-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 14, 8, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Centered Split-Screen Container: 100% solid, crisp white and photo */
+.split-login-container {
+  display: flex;
+  width: 100%;
+  max-width: 980px;
+  min-height: 560px;
+  height: 580px;
+  background: #FFFFFF;
+  border-radius: 20px;
+  box-shadow:
+    0 25px 65px -12px rgba(0, 0, 0, 0.55),
+    0 12px 28px -6px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.15);
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
+  opacity: 1;
+}
+
+/* --------------------------------------------------------------------------
+   Left Panel: Form Content (~41% on Desktop)
+   -------------------------------------------------------------------------- */
+.split-login-form-panel {
+  flex: 0 0 42%;
+  width: 42%;
+  background: #FFFFFF !important;
+  padding: 2.35rem 2.5rem 1.85rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 2;
+  overflow-y: auto;
+}
+
+.split-login-inner-top {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Brand Logo (Left-aligned, matching reference) */
+.split-login-brand {
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+}
+
+.split-login-logo {
+  height: 40px;
+  max-width: 190px;
+  width: auto;
+  object-fit: contain;
+  object-position: left center;
+  display: block;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.split-login-logo:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+/* Headings */
+.split-login-title {
+  font-family: var(--ayur-font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--ayur-text-dark);
+  margin: 0 0 0.35rem 0;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+.split-login-subtitle {
+  font-size: 0.85rem;
+  color: var(--ayur-text-muted);
+  line-height: 1.48;
+  margin: 0 0 1.35rem 0;
+}
+
+/* Error message banner */
+.split-login-error {
+  background-color: #FEF2F2;
+  border: 1px solid #FECACA;
+  border-radius: 9px;
+  color: #B91C1C;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+}
+
+.split-login-error-icon {
+  font-size: 0.95rem;
+  flex-shrink: 0;
+  line-height: 1.2;
+}
+
+/* Form Styles */
+.split-login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.split-input-group {
+  margin-bottom: 0.95rem;
+  text-align: left;
+}
+
+.split-input-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ayur-text-dark);
+  margin-bottom: 0.35rem;
+  letter-spacing: -0.01em;
+}
+
+.split-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.split-input {
+  width: 100%;
+  height: 44px;
+  padding: 0 0.9rem;
+  background-color: var(--ayur-bg-neutral);
+  border: 1.5px solid var(--ayur-border-light);
+  border-radius: 8px;
+  font-family: var(--ayur-font-body);
+  font-size: 0.9rem;
+  color: var(--ayur-text-dark);
+  transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.split-input::placeholder {
+  color: #A0AAB2;
+  font-size: 0.86rem;
+}
+
+.split-input:focus {
+  background-color: #FFFFFF;
+  border-color: var(--ayur-green-primary);
+  box-shadow: 0 0 0 3px rgba(63, 107, 53, 0.16);
+}
+
+.split-input.is-valid {
+  border-color: var(--ayur-green-primary);
+  padding-right: 2.5rem;
+}
+
+/* Valid checkmark badge matching reference */
+.split-valid-badge {
+  position: absolute;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+/* Password Toggle */
+.split-password-toggle {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  color: #718069;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: color 0.18s ease, background-color 0.18s ease;
+}
+
+.split-password-toggle:hover {
+  color: var(--ayur-green-primary);
+  background-color: rgba(63, 107, 53, 0.08);
+}
+
+.split-password-toggle:focus-visible {
+  outline: 2px solid var(--ayur-green-primary);
+}
+
+/* Remember Me Checkbox */
+.split-form-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0.1rem 0 1rem 0;
+  font-size: 0.82rem;
+}
+
+.split-checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #555E4C;
+  font-weight: 500;
+  cursor: pointer;
+  user-select: none;
+}
+
+.split-checkbox {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--ayur-green-primary);
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+/* Primary Sign In Button */
+.split-submit-btn {
+  width: 100%;
+  height: 45px;
+  background-color: var(--ayur-green-primary);
+  color: var(--ayur-white);
+  border: none;
+  border-radius: 8px;
+  font-family: var(--ayur-font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 14px rgba(63, 107, 53, 0.22);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+  outline: none;
+}
+
+.split-submit-btn:hover:not(:disabled) {
+  background-color: var(--ayur-green-hover);
+  box-shadow: 0 6px 18px rgba(63, 107, 53, 0.32);
+}
+
+.split-submit-btn:focus-visible {
+  outline: 2px solid var(--ayur-green-primary);
+  outline-offset: 2px;
+}
+
+.split-submit-btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.split-submit-btn:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+/* Loading spinner */
+.split-btn-loading {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.split-spinner {
+  width: 15px;
+  height: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #FFFFFF;
+  border-radius: 50%;
+  animation: splitSpin 0.7s linear infinite;
+}
+
+@keyframes splitSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* Demo Credentials Quick-Fill Badge */
+.split-demo-helper {
+  margin-top: 1.15rem;
+  padding: 0.65rem 0.85rem;
+  background-color: var(--ayur-bg-neutral);
+  border: 1px dashed #CBD8C7;
+  border-radius: 8px;
+  font-size: 0.76rem;
+  color: #4A5643;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.split-demo-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.3rem;
+  flex-wrap: wrap;
+}
+
+.split-demo-tag {
+  font-weight: 600;
+  color: var(--ayur-green-primary);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.split-demo-fill-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.76rem;
+  color: var(--ayur-green-primary);
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.15s ease;
+  white-space: nowrap;
+}
+
+.split-demo-fill-btn:hover {
+  color: var(--ayur-green-dark);
+}
+
+.split-demo-creds {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem 0.5rem;
+  color: #555E4C;
+  flex-wrap: wrap;
+}
+
+.split-demo-creds code {
+  font-family: monospace;
+  background: rgba(63, 107, 53, 0.08);
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  font-size: 0.74rem;
+  color: var(--ayur-text-dark);
+  word-break: break-all;
+}
+
+/* Footer Link back to Home */
+.split-login-footer {
+  text-align: center;
+  margin-top: 0.95rem;
+}
+
+.split-back-link {
+  background: none;
+  border: none;
+  color: #6C7762;
+  font-family: var(--ayur-font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.45rem;
+  border-radius: 4px;
+  transition: color 0.18s ease;
+}
+
+.split-back-link:hover {
+  color: var(--ayur-green-primary);
+}
+
+/* --------------------------------------------------------------------------
+   Right Panel: Fruit Bowl Photograph (~58% on Desktop)
+   -------------------------------------------------------------------------- */
+.split-login-image-panel {
+  flex: 1 1 58%;
+  width: 58%;
+  position: relative;
+  overflow: hidden;
+  background: #252B1E;
+  height: 100%;
+}
+
+.split-image-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.split-food-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 32%;
+  display: block;
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.split-login-container:hover .split-food-image {
+  transform: scale(1.025);
+}
+
+/* Subtle overlay protecting contrast and creating a tailored luxury vignette */
+.split-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(20, 26, 18, 0.04) 0%,
+    rgba(20, 26, 18, 0.0) 45%,
+    rgba(20, 26, 18, 0.38) 100%
+  );
+  pointer-events: none;
+}
+
+/* Floating Wellness Micro-Badge on bottom-right of image */
+.split-image-badge {
+  position: absolute;
+  bottom: 22px;
+  right: 22px;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.7rem 1.1rem;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 13px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  pointer-events: none;
+}
+
+.split-badge-icon {
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.split-badge-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.split-badge-text strong {
+  font-family: var(--ayur-font-display);
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--ayur-text-dark);
+}
+
+.split-badge-text span {
+  font-size: 0.72rem;
+  color: var(--ayur-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Layout & Breakpoints
+   -------------------------------------------------------------------------- */
+
+/* Tablet (1024px and below) */
+@media (max-width: 1024px) {
+  .split-login-container {
+    max-width: 880px;
+    height: 560px;
+  }
+  .split-login-form-panel {
+    flex: 0 0 46%;
+    width: 46%;
+    padding: 2.2rem 2rem 1.75rem;
+  }
+  .split-login-image-panel {
+    flex: 1 1 54%;
+    width: 54%;
+  }
+  .split-login-title {
+    font-size: 1.65rem;
+  }
+}
+
+/* Mobile & Small Tablets (< 768px): Single-column stacked layout */
+@media (max-width: 768px) {
+  .split-login-backdrop {
+    padding: 1.25rem 1rem;
+    align-items: center;
+  }
+
+  .split-login-container {
+    flex-direction: column;
+    width: 100%;
+    max-width: 440px;
+    height: auto;
+    min-height: auto;
+    border-radius: 18px;
+    margin: auto;
+    box-sizing: border-box;
+  }
+
+  .split-login-form-panel {
+    width: 100%;
+    flex: none;
+    box-sizing: border-box;
+    padding: 2.2rem 1.65rem 1.75rem;
+    order: 1;
+  }
+
+  /* Shorter image section placed below form per prompt instructions */
+  .split-login-image-panel {
+    width: 100%;
+    height: 180px;
+    flex: none;
+    order: 2;
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  .split-image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .split-food-image {
+    object-position: center 30%;
+  }
+
+  .split-image-badge {
+    bottom: 12px;
+    right: 12px;
+    padding: 0.45rem 0.8rem;
+    border-radius: 10px;
+  }
+
+  .split-badge-text span {
+    display: none;
+  }
+}
+
+/* Compact Mobile (< 420px: 390px, 375px) */
+@media (max-width: 420px) {
+  .split-login-backdrop {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .split-login-container {
+    border-radius: 14px;
+    max-width: 100%;
+  }
+
+  .split-login-form-panel {
+    padding: 1.6rem 1.15rem 1.35rem;
+  }
+
+  .split-login-title {
+    font-size: 1.55rem;
+  }
+
+  .split-login-subtitle {
+    font-size: 0.82rem;
+    margin-bottom: 1.15rem;
+  }
+
+  .split-input {
+    height: 44px;
+    font-size: 0.88rem;
+  }
+
+  .split-submit-btn {
+    height: 45px;
+    font-size: 0.94rem;
+  }
+
+  .split-demo-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+  }
+
+  .split-demo-creds {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .split-login-image-panel {
+    height: 150px;
+  }
+}
+
+/* Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+  .split-food-image,
+  .split-submit-btn,
+  .split-input,
+  .split-login-logo {
+    transition: none;
+  }
+}
